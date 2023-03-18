@@ -38,4 +38,40 @@ class TestModule: NSObject {
     }
   }
   
+  @objc func testNumberArray(_ param: ReadableArray, _ resolve: RCTPromiseResolveBlock, _ reject: RCTPromiseRejectBlock) {
+    do {
+      let testArray: [Int] = try param.decode()
+      NSLog("testNumberArray: \(testArray)")
+      
+      let readableArray = try testArray.encode()
+      resolve(readableArray)
+    } catch {
+      
+    }
+  }
+  
+  @objc func testStringArray(_ param: ReadableArray, _ resolve: RCTPromiseResolveBlock, _ reject: RCTPromiseRejectBlock) {
+    do {
+      let testArray: [String] = try param.decode()
+      NSLog("testStringArray: \(testArray)")
+      
+      let readableArray = try testArray.encode()
+      resolve(readableArray)
+    } catch {
+      
+    }
+  }
+  
+  @objc func testBooleanArray(_ param: ReadableArray, _ resolve: RCTPromiseResolveBlock, _ reject: RCTPromiseRejectBlock) {
+    do {
+      let testArray: [Bool] = try param.decode()
+      NSLog("testBooleanArray: \(testArray)")
+      
+      let readableArray = try testArray.encode()
+      resolve(readableArray)
+    } catch {
+      
+    }
+  }
+  
 }

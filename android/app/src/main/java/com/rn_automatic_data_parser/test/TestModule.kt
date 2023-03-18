@@ -25,11 +25,41 @@ class TestModule : ReactContextBaseJavaModule() {
 
     @ReactMethod
     fun testArray(param: ReadableArray, promise: Promise) {
-        val testArrayArg = param.decode<TestArrayArg>()
-        Log.d(TAG, "testArray: argument -> $testArrayArg")
+        // decode from JS
+        val testArray = param.decode<TestArrayArg>()
+        Log.d(TAG, "testArray: argument -> $testArray")
 
-        // pass the object to JS
-        val readableArray = testArrayArg.encode()
+        // pass to JS
+        val readableArray = testArray.encode()
+        promise.resolve(readableArray)
+    }
+
+    @ReactMethod
+    fun testNumberArray(param: ReadableArray, promise: Promise) {
+        // decode from JS
+        val testArray = param.decode<Int>()
+        Log.d(TAG, "testNumberArray: argument -> $testArray")
+
+        // pass to JS
+        val readableArray = testArray.encode()
+        promise.resolve(readableArray)
+    }
+
+    @ReactMethod
+    fun testStringArray(param: ReadableArray, promise: Promise) {
+        val testArray = param.decode<String>()
+        Log.d(TAG, "testStringArray: argument -> $testArray")
+
+        val readableArray = testArray.encode()
+        promise.resolve(readableArray)
+    }
+
+    @ReactMethod
+    fun testBooleanArray(param: ReadableArray, promise: Promise) {
+        val testArray = param.decode<Boolean>()
+        Log.d(TAG, "testBooleanArray: argument -> $testArray")
+
+        val readableArray = testArray.encode()
         promise.resolve(readableArray)
     }
 

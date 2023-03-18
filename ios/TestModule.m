@@ -19,4 +19,19 @@ RCT_EXTERN_METHOD(testArray
                   : (RCTPromiseResolveBlock) resolve
                   : (RCTPromiseRejectBlock) reject
                   )
+RCT_EXTERN_METHOD(testNumberArray
+                  : (nonnull NSArray *) param
+                  : (RCTPromiseResolveBlock) resolve
+                  : (RCTPromiseRejectBlock) reject
+                  )
+RCT_EXTERN_METHOD(testStringArray
+                  : (nonnull NSArray *) param
+                  : (RCTPromiseResolveBlock) resolve
+                  : (RCTPromiseRejectBlock) reject
+                  )
+RCT_EXTERN_METHOD(testBooleanArray
+                  : (nonnull NSArray *) param
+                  : (RCTPromiseResolveBlock) resolve
+                  : (RCTPromiseRejectBlock) reject
+                  )
 @end

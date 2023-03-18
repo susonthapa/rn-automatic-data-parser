@@ -51,6 +51,16 @@ function App(): JSX.Element {
           ])
         console.log('Got Array: ', response);
       }} />
+      <Button title='Pass Primitive' onPress={async () => {
+        const numberArray = await TestModule.testNumberArray([1, 10, 20])
+        console.log('Got Primitive Number Array: ', numberArray);
+
+        const stringArray = await TestModule.testStringArray(['Apple', 'Banana'])
+        console.log('Got Primitive String Array: ', stringArray);
+
+        const booleanArray = await TestModule.testBooleanArray([true, false, true])
+        console.log('Got Primitive Boolean Array: ', booleanArray);
+      }} />
     </SafeAreaView>
   );
 }

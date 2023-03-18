@@ -26,8 +26,28 @@ fun Codable.encode(): ReadableMap {
     return Arguments.makeNativeMap(hashMap)
 }
 
+@JvmName("encodeCodable")
 fun Collection<Codable>.encode(): ReadableArray {
-    val json = MoshiParser.toJsonString(this, List::class.java)!!
+    return encodeInternal(this)
+}
+
+@JvmName("encodeNumber")
+fun Collection<Number>.encode(): ReadableArray {
+    return encodeInternal(this)
+}
+
+@JvmName("encodeBoolean")
+fun Collection<Boolean>.encode(): ReadableArray {
+    return encodeInternal(this)
+}
+
+@JvmName("encodeString")
+fun Collection<String>.encode(): ReadableArray {
+    return encodeInternal(this)
+}
+
+private fun encodeInternal(args: Collection<*>): ReadableArray {
+    val json = MoshiParser.toJsonString(args, List::class.java)!!
     val array = MoshiParser.fromJsonString<List<*>>(json, List::class.java)
     return Arguments.makeNativeArray(array)
 }
