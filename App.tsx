@@ -8,12 +8,9 @@
 import React from 'react';
 import {
   Button,
-  NativeModules,
-  requireNativeComponent,
-  SafeAreaView, StatusBar
+  NativeModules, SafeAreaView, StatusBar
 } from 'react-native';
 
-const TestView = requireNativeComponent('TestView')
 const TestModule = NativeModules.TestModule
 
 
@@ -22,25 +19,38 @@ function App(): JSX.Element {
   return (
     <SafeAreaView>
       <StatusBar />
-      <TestView
-        style={{
-          width: 100,
-          height: 100,
-        }}
-        testProp={{
-          name: 'Susan',
-          age: 100,
-          details: {
-            happy: true,
-            status: 'Developer',
+      <Button title='Pass Object' onPress={async () => {
+        const response = await TestModule.testMap(
+          {
+            arg: 'Button Clicked',
+            value: {
+              test: 'Button Clicked',
+            }
           }
-        }} />
-      <Button title='Click Me!' onPress={() => TestModule.testMethod({
-        arg: 'Button Clicked',
-        value: {
-          test: 'Button Clicked',
-        }
-      })} />
+        )
+        console.log('Got Object: ', response);
+
+      }} />
+      <Button title='Pass Array' onPress={async () => {
+        const response = await TestModule.testArray(
+          [
+            {
+              name: 'Bob',
+              age: 35,
+              details: {
+                hobby: 'Coding',
+              },
+            },
+            {
+              name: 'Ali',
+              age: 25,
+              details: {
+                hobby: 'Signing',
+              },
+            },
+          ])
+        console.log('Got Array: ', response);
+      }} />
     </SafeAreaView>
   );
 }

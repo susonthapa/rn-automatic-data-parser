@@ -11,6 +11,6 @@ class TestPackage: ReactPackage {
     }
 
     override fun createViewManagers(reactContext: ReactApplicationContext): MutableList<ViewManager<*, *>> {
-        return mutableListOf(TestViewManager())
+        return mutableListOf()
     }
 }
