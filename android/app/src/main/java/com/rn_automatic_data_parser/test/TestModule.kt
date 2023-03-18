@@ -16,7 +16,7 @@ class TestModule : ReactContextBaseJavaModule() {
     fun testMap(param: ReadableMap, promise: Promise) {
         // convert the JS object to kotlin object
         val testMapArg = param.decode<TestMapArg>()
-        Log.d(TAG, "testMethod: argument -> $testMapArg")
+        Log.d(TAG, "testMap: argument -> $testMapArg")
 
         // pass the kotlin object to JS object
         val readableMap = testMapArg.encode()
