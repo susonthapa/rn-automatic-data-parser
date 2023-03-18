@@ -1,5 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlin-kapt'
 
 import com.android.build.OutputFile
 
@@ -151,6 +153,10 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+
+    // moshi parser
+    implementation("com.squareup.moshi:moshi:1.14.0")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
 
