@@ -11,7 +11,7 @@ data class TestArrayArg(
     @JsonClass(generateAdapter = true)
     data class Details(
         val hobby: String,
-    )
+    ) : Codable
 }
 
 @JsonClass(generateAdapter = true)
@@ -22,5 +22,5 @@ data class TestMapArg(
     @JsonClass(generateAdapter = true)
     data class Value(
         val test: String,
-    )
+    ) : Codable
 }
