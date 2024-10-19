@@ -13,6 +13,51 @@ class TestModule : ReactContextBaseJavaModule() {
     }
 
     @ReactMethod
+    fun unsafeAccess(promise: Promise) {
+        try {
+            val value: Int? = null
+            val sum = value!! + 10
+            promise.resolve(sum)
+        } catch (e: Exception) {
+            promise.reject(e)
+        }
+    }
+
+    @ReactMethod
+    fun safeAccess(promise: Promise) {
+        try {
+            val value: Int? = null
+            val sum = value!! + 10
+            promise.resolve(sum)
+        } catch (e: Exception) {
+            promise.reject(e)
+        }
+    }
+
+    @ReactMethod
+    fun unsafeCast(promise: Promise) {
+        try {
+            val value: Int = 10
+            val castValue: String = value as String
+            promise.resolve(castValue)
+        } catch (e: Exception) {
+            promise.reject(e)
+        }
+    }
+
+    @ReactMethod
+    fun safeCast(promise: Promise) {
+        try {
+            val value: Int = 10
+            val castValue: String = value as String
+            promise.resolve(castValue)
+        } catch (e: Exception) {
+            promise.reject(e)
+        }
+    }
+
+
+    @ReactMethod
     fun testMap(param: ReadableMap, promise: Promise) {
         // convert the JS object to kotlin object
         val testMapArg = param.decode<TestMapArg>()
