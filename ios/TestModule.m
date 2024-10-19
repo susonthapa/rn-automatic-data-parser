@@ -9,6 +9,22 @@
 #import "React/RCTUIManager.h"
 
 @interface RCT_EXTERN_MODULE (TestModule, NSObject)
+RCT_EXTERN_METHOD(unsafeAccess
+                  : (RCTPromiseResolveBlock) resolve
+                  : (RCTPromiseRejectBlock) reject
+                  )
+RCT_EXTERN_METHOD(safeAccess
+                  : (RCTPromiseResolveBlock) resolve
+                  : (RCTPromiseRejectBlock) reject
+                  )
+RCT_EXTERN_METHOD(unsafeCast
+                  : (RCTPromiseResolveBlock) resolve
+                  : (RCTPromiseRejectBlock) reject
+                  )
+RCT_EXTERN_METHOD(safeCast
+                  : (RCTPromiseResolveBlock) resolve
+                  : (RCTPromiseRejectBlock) reject
+                  )
 RCT_EXTERN_METHOD(testMap
                   : (nonnull NSDictionary *) param
                   : (RCTPromiseResolveBlock) resolve

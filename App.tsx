@@ -23,9 +23,6 @@ function App(): JSX.Element {
         const response = await TestModule.testMap(
           {
             arg: 'Button Clicked',
-            value: {
-              test: 'Button Clicked',
-            }
           }
         )
         console.log('Got Object: ', response);
@@ -60,6 +57,38 @@ function App(): JSX.Element {
 
         const booleanArray = await TestModule.testBooleanArray([true, false, true])
         console.log('Got Primitive Boolean Array: ', booleanArray);
+      }} />
+      <Button title='Unsafe Access' onPress={async () => {
+        try {
+          const value = await TestModule.unsafeAccess()
+          console.log('Got Unsafe Access: ', value);
+        } catch (error) {
+          console.log('Error: ', error);
+        }
+      }} />
+      <Button title='Safe Access' onPress={async () => {
+        try {
+          const value = await TestModule.safeAccess()
+          console.log('Got Safe Access: ', value);
+        } catch (error) {
+          console.log('Error: ', error);
+        }
+      }} />
+      <Button title='Unsafe Cast' onPress={async () => {
+        try {
+          const value = await TestModule.unsafeCast()
+          console.log('Got Unsafe Cast: ', value);
+        } catch (error) {
+          console.log('Error: ', error);
+        }
+      }} />
+      <Button title='Safe Cast' onPress={async () => {
+        try {
+          const value = await TestModule.safeCast()
+          console.log('Got Safe Cast: ', value);
+        } catch (error) {
+          console.log('Error: ', error);
+        }
       }} />
     </SafeAreaView>
   );
